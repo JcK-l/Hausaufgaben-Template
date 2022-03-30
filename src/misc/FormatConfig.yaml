@@ -1,0 +1,9 @@
+defaultIndent: "  "
+
+indentRules:
+  myenvironment: "  "
+  anotherenvironment: "  "
+  chapter: "  "
+  section: "  "
+  item: "  "
+  myitem: "  "

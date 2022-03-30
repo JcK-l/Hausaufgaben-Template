@@ -1,0 +1,26 @@
+\begin{switch}{\theAnzahlStudenten}
+	\case{2}{
+		\begin{tabular}{cc}
+			\@VornameEins \space \@NachnameEins & \@VornameZwei \space \@NachnameZwei \\
+			\@MatrikelnummerEins                & \@MatrikelnummerZwei
+		\end{tabular}\par
+	}
+	\case{3}{
+		\begin{tabular}{ccc}
+			\@VornameEins \space \@NachnameEins & \@VornameZwei \space \@NachnameZwei & \@VornameDrei \space \@NachnameDrei \\
+			\@MatrikelnummerEins                & \@MatrikelnummerZwei                & \@MatrikelnummerDrei
+		\end{tabular}\par
+	}
+	\case{4}{
+		\begin{tabular}{cccc}
+			\@VornameEins \space \@NachnameEins & \@VornameZwei \space \@NachnameZwei & \@VornameDrei \space \@NachnameDrei & \@VornameVier \space \@NachnameVier \\
+			\@MatrikelnummerEins                & \@MatrikelnummerZwei                & \@MatrikelnummerDrei                & \@MatrikelnummerVier
+		\end{tabular}\par
+	}
+	\case{5}{
+		\begin{tabular}{ccccc}
+			\@VornameEins \space \@NachnameEins & \@VornameZwei \space \@NachnameZwei & \@VornameDrei \space \@NachnameDrei & \@VornameVier \space \@NachnameVier & \@VornameFuenf \space \@NachnameFuenf \\
+			\@MatrikelnummerEins                & \@MatrikelnummerZwei                & \@MatrikelnummerDrei                & \@MatrikelnummerVier                & \@MatrikelnummerFuenf
+		\end{tabular}\par
+	}
+\end{switch}

@@ -1,0 +1,18 @@
+\StrLen{\@VornameEins \space \@NachnameEins}[\@LenStudentEins]
+\StrLen{\@VornameZwei \space \@NachnameZwei}[\@LenStudentZwei]
+\StrLen{\@VornameDrei \space \@NachnameDrei}[\@LenStudentDrei]
+\StrLen{\@VornameVier \space \@NachnameVier}[\@LenStudentVier]
+\StrLen{\@VornameFuenf \space \@NachnameFuenf}[\@LenStudentFuenf]
+
+\def\@thresh{12}
+\ifthenelse{\@LenStudentEins > \@thresh}{\@NameZuLang{true}}{}
+\ifthenelse{\@LenStudentZwei > \@thresh}{\@NameZuLang{true}}{}
+\ifthenelse{\@LenStudentDrei > \@thresh}{\@NameZuLang{true}}{}
+\ifthenelse{\@LenStudentVier > \@thresh}{\@NameZuLang{true}}{}
+\ifthenelse{\@LenStudentFuenf > \@thresh}{\@NameZuLang{true}}{}
+
+\ifthenelse{\boolean{NameZuLang}}{
+	\input{../src/misc/NameLayout/vertical.tex}
+}{
+	\input{../src/misc/NameLayout/horizontal.tex}
+}
