@@ -204,6 +204,11 @@
   #1%
 }}%
 
+\newcommand*{\@LogoPlacement}{}%
+\newcommand{\SetLogoPlacement}[1]{\gdef\@LogoPlacement{%
+  #1%
+}}%
+
 \newcommand*{\@NameLayout}{}%
 \newcommand{\SetNameLayout}[1]{\gdef\@NameLayout{%
   #1%
@@ -299,15 +304,7 @@
   \ifthenelse{
     \boolean{Logo}
   }{
-    \IfFileExists{\@LogoPath.svg}{
-      \begin{figure}[H]
-        \includesvg[scale=\@LogoScale]{\@LogoPath}
-      \end{figure}
-    }{
-      \begin{figure}[H]
-        \includegraphics[scale=\@LogoScale]{\@LogoPath}
-      \end{figure}
-    }
+    \input{../src/misc/LogoPlacement/\@LogoPlacement.tex}
   }{}
   \begin{center}%
     \vspace*{\@Titlespacing}

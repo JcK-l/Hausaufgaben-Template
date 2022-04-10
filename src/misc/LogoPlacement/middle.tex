@@ -1,0 +1,11 @@
+\IfFileExists{\@LogoPath.svg}{
+	\begin{figure}[H]
+		\centering
+		\includesvg[scale=\@LogoScale]{\@LogoPath}
+	\end{figure}
+}{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=\@LogoScale]{\@LogoPath}
+	\end{figure}
+}
