@@ -1,14 +1,22 @@
 %%%%%%%%%%%%%%%% Extra Packages %%%%%%%%%%%%%%%%
 
+% turns on parkskip package
+\Parskip{true} % true/false
+
 % \usepackage{}
 
 %%%%%%%%%%%%%%%%%% Variablen %%%%%%%%%%%%%%%%%%%
 
-\Logo{true} % true/false
-\SetLogoPath{../res/logos/UHH}
-\SetLogoScale{.65}
+% img path
+\graphicspath{{img/}}
+\svgpath{{img/}}
 
-\SetAnzahlStudenten{5}
+\Logo{true} % true/false
+\SetLogoPath{../res/logos/UHH} % UHH, WAP
+\SetLogoScale{.65}
+\SetTitlespacing{4.5cm} % from the top
+
+\SetAnzahlStudenten{3}
 
 % Student 1
 \SetVornameEins{\ldots}
@@ -36,7 +44,7 @@
 \SetMatrikelnummerFuenf{1234567}
 
 % dyanmic, vertical, horizontal, list
-\SetNameLayout{horizontal}
+\SetNameLayout{dynamic}
 
 \SetModulKurz{MOD}
 \SetModulLang{Modul}
@@ -49,12 +57,7 @@
 % 4 = \setstretch{}; [] for strech value  
 \SetSpacing[1.2]{4}
 
-% turns on parkskip package
-\Parskip{true} % true/false
-
-\geometry{
-  width=16cm, headheight=15pt, a4paper, bottom=1in, top=1in
-}
+\raggedbottom
 
 % A = \Alph*
 % a = \alph*
@@ -83,5 +86,62 @@
 \SetFontMono{FiraCode}
 
 \AllSans{true} % true/false
+
+%%%%%%%%%%%%%%%% Package Config %%%%%%%%%%%%%%%%
+
+\geometry{
+	width=16cm, headheight=15pt, a4paper, bottom=1in, top=1in
+}
+
+% listings
+\lstset{
+	backgroundcolor=\color{c_background},              % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	basicstyle=\ttfamily\small\color{c_foreground},    % the size of the fonts that are used for the code
+	breakatwhitespace=false,                           % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                                   % sets automatic line breaking
+	captionpos=b,                                      % sets the caption-position to bottom
+	commentstyle=\itshape\color{c_comment},            % comment style
+	% deletekeywords={...},                            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},                            % if you want to add LaTeX within your code
+	% extendedchars=true,                              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	% firstnumber=1000,                                % start line enumeration with line 1000
+	% frame=single,	                                   % adds a frame around the code
+	keepspaces=true,                                   % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{c_keyword},                    % keyword style
+	% language=Octave,                                 % the language of the code
+	% morekeywords={*,...},                            % if you want to add more keywords to the set
+	numbers=left,                                      % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                                     % how far the line-numbers are from the code
+	numberstyle=\scriptsize\color{c_foreground},       % the style that is used for the line-numbers
+	rulecolor=\color{black},                           % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=true,                                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,                            % underline spaces within strings only
+	showtabs=false,                                    % show tabs within strings adding particular underscores
+	stepnumber=1,                                      % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{c_string},                      % string literal style
+	tabsize=2,	                                       % sets default tabsize to 2 spaces
+	title=\lstname,                                    % show the filename of files included with \lstinputlisting; also try caption instead of title
+	caption=
+}
+
+% hyperlink 
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+\urlstyle{sf}
+
+% tiks 
+\usetikzlibrary{automata, positioning, shadows, arrows}
+\tikzset{
+	->,
+	>=stealth',
+	node distance=2.5cm,
+	every state/.style={semithick, minimum width=8pt,  fill=backcolour, inner sep=0pt},
+	initial text=$ $,
+}
+
+%%%%%%%%%%%%%%%% Initialization %%%%%%%%%%%%%%%%
 
 \initialize

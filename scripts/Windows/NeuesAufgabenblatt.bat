@@ -18,7 +18,7 @@ cls
 
 set /p Aufgaben="Wieviele Aufgaben? "
 
-echo \documentclass{../src/Hausaufgaben}>> "%InFile%"
+echo \documentclass{../src/misc/Hausaufgaben}>> "%InFile%"
 echo.>> "%InFile%"
 echo \input{../Defaults}>> "%InFile%"
 echo.>> "%InFile%"

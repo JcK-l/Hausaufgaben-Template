@@ -7,7 +7,6 @@
 
 %%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%
 
-
 \RequirePackage{geometry}  % page formats
 \RequirePackage{fancyhdr}  % fancy header and footer lines 
 \RequirePackage{xifthen}
@@ -34,47 +33,6 @@
 \RequirePackage{booktabs}
 \RequirePackage{setspace}
 \RequirePackage{anyfontsize}
-
-%%%%%%%%%%%%%%%% Config %%%%%%%%%%%%%%%%
-
-% img path
-\graphicspath{{img/}}
-\svgpath{{img/}}
-
-% listings
-\lstset{ 
-  backgroundcolor=\color{c_background},              % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-  basicstyle=\ttfamily\small\color{c_foreground},    % the size of the fonts that are used for the code
-  breakatwhitespace=false,                           % sets if automatic breaks should only happen at whitespace
-  breaklines=true,                                   % sets automatic line breaking
-  captionpos=b,                                      % sets the caption-position to bottom
-  commentstyle=\itshape\color{c_comment},                    % comment style
-  % deletekeywords={...},                            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},                            % if you want to add LaTeX within your code
-  % extendedchars=true,                              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-  % firstnumber=1000,                                % start line enumeration with line 1000
-  % frame=single,	                                   % adds a frame around the code
-  keepspaces=true,                                   % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-  keywordstyle=\color{c_keyword},                     % keyword style
-  % language=Octave,                                 % the language of the code
-  % morekeywords={*,...},                            % if you want to add more keywords to the set
-  numbers=left,                                      % where to put the line-numbers; possible values are (none, left, right)
-  numbersep=5pt,                                     % how far the line-numbers are from the code
-  numberstyle=\scriptsize\color{c_foreground},       % the style that is used for the line-numbers
-  rulecolor=\color{black},                           % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-  showspaces=true,                                   % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-  showstringspaces=false,                            % underline spaces within strings only
-  showtabs=false,                                    % show tabs within strings adding particular underscores
-  stepnumber=1,                                      % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{c_string},                      % string literal style
-  tabsize=2,	                                       % sets default tabsize to 2 spaces
-  title=\lstname                                     % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
-
-% tiks config
-\usetikzlibrary{positioning,shadows,arrows}
-
-\raggedbottom
 
 %%%%%%%%%%%%%%%% Counters %%%%%%%%%%%%%%%%
 
@@ -241,6 +199,11 @@
   #1%
 }}%
 
+\newcommand*{\@Titlespacing}{}%
+\newcommand{\SetTitlespacing}[1]{\gdef\@Titlespacing{%
+  #1%
+}}%
+
 \newcommand*{\@NameLayout}{}%
 \newcommand{\SetNameLayout}[1]{\gdef\@NameLayout{%
   #1%
@@ -336,13 +299,18 @@
   \ifthenelse{
     \boolean{Logo}
   }{
-    \begin{figure}[H]
-      \includesvg[scale=\@LogoScale]{\@LogoPath}
-    \end{figure}
-    \vspace*{-1cm}
+    \IfFileExists{\@LogoPath.svg}{
+      \begin{figure}[H]
+        \includesvg[scale=\@LogoScale]{\@LogoPath}
+      \end{figure}
+    }{
+      \begin{figure}[H]
+        \includegraphics[scale=\@LogoScale]{\@LogoPath}
+      \end{figure}
+    }
   }{}
   \begin{center}%
-    \vspace*{5.5cm}
+    \vspace*{\@Titlespacing}
     {\Huge\mdseries\sffamily Aufgabenblatt \@Aufgabenblatt \par}%
     {\large\sffamily \@date \par} % Set date in \large size.
     \vspace{2cm}
@@ -358,7 +326,6 @@
 }
 
 %%%%%%%%%%%%%%%% initialization %%%%%%%%%%%%%%%%
-
 
 \newcommand{\initColors}{
   \input{../src/colors/\@Colors.tex}
